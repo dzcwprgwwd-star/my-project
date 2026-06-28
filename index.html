@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smash &amp; Stack — Hand-Smashed Burgers</title>
+  <meta name="description" content="Smash &amp; Stack serves hand-smashed, locally-sourced burgers with crispy edges and stacked-high flavor. Dine in, take out, or order online." />
+  <meta name="theme-color" content="#dc2626" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a href="#main" class="btn btn-primary" style="position:absolute;left:-999px;top:0;z-index:200" onfocus="this.style.left='1rem';this.style.top='0.5rem'" onblur="this.style.left='-999px'">Skip to content</a>
+
+  <!-- ============================ SVG SPRITE ========================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- Burger illustration -->
+      <symbol id="ic-burger" viewBox="0 0 200 170">
+        <!-- top bun -->
+        <path d="M16 70 C16 28 56 8 100 8 C144 8 184 28 184 70 Z" fill="#e8a04e"/>
+        <path d="M16 70 C16 28 56 8 100 8 C144 8 184 28 184 70 Z" fill="url(#bunShine)" opacity=".5"/>
+        <!-- sesame -->
+        <g fill="#fff5e1">
+          <ellipse cx="70" cy="34" rx="6" ry="3.4" transform="rotate(-22 70 34)"/>
+          <ellipse cx="104" cy="26" rx="6" ry="3.4" transform="rotate(8 104 26)"/>
+          <ellipse cx="132" cy="38" rx="6" ry="3.4" transform="rotate(28 132 38)"/>
+          <ellipse cx="88" cy="46" rx="6" ry="3.4" transform="rotate(-8 88 46)"/>
+          <ellipse cx="118" cy="52" rx="6" ry="3.4" transform="rotate(16 118 52)"/>
+          <ellipse cx="55" cy="52" rx="6" ry="3.4" transform="rotate(-30 55 52)"/>
+        </g>
+        <!-- lettuce -->
+        <path d="M10 74c8-9 18 4 26-4s18 4 26-4 18 4 26-4 18 4 26-4 18 4 26-4 18 4 26-4 14 2 18 6v8H10Z" fill="#7cb342"/>
+        <!-- cheese -->
+        <path d="M22 86h156l-16 22c-3 4-7 6-12 6H50c-5 0-9-2-12-6Z" fill="#ffc534"/>
+        <path d="M40 110l10 16M150 110l-8 14M96 112l2 16" stroke="#f5a623" stroke-width="3" stroke-linecap="round" fill="none" opacity=".55"/>
+        <!-- patty -->
+        <rect x="18" y="104" width="164" height="30" rx="15" fill="#6b3a23"/>
+        <rect x="18" y="104" width="164" height="14" rx="7" fill="#7d472c"/>
+        <!-- tomato -->
+        <rect x="26" y="128" width="148" height="14" rx="7" fill="#e2402f"/>
+        <!-- bottom bun -->
+        <path d="M22 138h156c0 16-14 24-44 24H66c-30 0-44-8-44-24Z" fill="#e09a44"/>
+      </symbol>
+
+      <linearGradient id="bunShine" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+
+      <!-- Icons (stroke, 24px) -->
+      <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h2"/><path d="M14 9h4l3 3v5a1 1 0 0 1-1 1h-1"/><circle cx="7.5" cy="18.5" r="2"/><circle cx="17.5" cy="18.5" r="2"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+      <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+      <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+      <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6v1.9H16l-.4 2.9h-2.1v7A10 10 0 0 0 22 12Z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.3L23 22h-6.8l-5.3-6.9L4.8 22H1.7l7.8-8.9L1 2h7l4.8 6.3Zm-1.2 18h1.7L7.4 3.8H5.6Z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ============================== NAV ============================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="Smash and Stack home">
+        <svg class="brand__mark" aria-hidden="true"><use href="#ic-burger"/></svg>
+        Smash<b>&amp;</b>Stack
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#about">Our Story</a>
+        <a href="#how">How We Cook</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#visit">Visit</a>
+      </nav>
+
+      <div class="nav__cta">
+        <a href="menu.html" class="btn btn-ghost">Full Menu</a>
+        <a href="#reserve" class="btn btn-primary">Book a Table</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <svg aria-hidden="true"><use href="#i-menu" id="toggleIcon"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="hero__badge"><svg aria-hidden="true"><use href="#i-award"/></svg> Voted #1 Burger in the City — 2025</span>
+          <h1>Hand-smashed.<br /><span class="flame">Stacked high.</span></h1>
+          <p class="lead">Griddle-crisped patties, melty cheese and house sauce on a toasted brioche bun. Locally sourced, never frozen, always stacked the way a burger should be.</p>
+          <div class="hero__actions">
+            <a href="menu.html" class="btn btn-primary">Order Now <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="#menu" class="btn btn-ghost">See the Menu</a>
+          </div>
+          <div class="hero__stats">
+            <div><div class="stat__num">28k+</div><div class="stat__label">Burgers / month</div></div>
+            <div><div class="stat__num">4.9★</div><div class="stat__label">3,200 reviews</div></div>
+            <div><div class="stat__num">100%</div><div class="stat__label">Fresh beef daily</div></div>
+          </div>
+        </div>
+
+        <div class="hero__art">
+          <div class="disc" aria-hidden="true"></div>
+          <svg class="burger" viewBox="0 0 200 170" role="img" aria-label="The Smash &amp; Stack signature double burger"><use href="#ic-burger"/></svg>
+          <div class="price-tag" aria-hidden="true"><small>FROM</small><b>$9</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== MARQUEE ========================== -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>SMASHED FRESH DAILY</span><span>NEVER FROZEN BEEF</span><span>TOASTED BRIOCHE</span><span>HOUSE SAUCE</span><span>HAND-CUT FRIES</span>
+        <span>SMASHED FRESH DAILY</span><span>NEVER FROZEN BEEF</span><span>TOASTED BRIOCHE</span><span>HOUSE SAUCE</span><span>HAND-CUT FRIES</span>
+      </div>
+    </div>
+
+    <!-- =========================== FEATURES ========================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Why Smash &amp; Stack</span>
+          <h2 class="section-title">Burgers worth the trip</h2>
+          <p class="lead">No shortcuts, no freezers, no fuss — just seriously good food made fast.</p>
+        </div>
+        <div class="features__grid">
+          <article class="feature reveal">
+            <div class="feature__icon"><svg aria-hidden="true"><use href="#i-flame"/></svg></div>
+            <h3>Smashed to order</h3>
+            <p>Each patty is pressed thin on a 450°F flat-top for those craveable lacy, crispy edges.</p>
+          </article>
+          <article class="feature reveal">
+            <div class="feature__icon"><svg aria-hidden="true"><use href="#i-leaf"/></svg></div>
+            <h3>Locally sourced</h3>
+            <p>Grass-fed beef and produce from farms within 50 miles. Fresh deliveries every morning.</p>
+          </article>
+          <article class="feature reveal">
+            <div class="feature__icon"><svg aria-hidden="true"><use href="#i-clock"/></svg></div>
+            <h3>Ready in 8 minutes</h3>
+            <p>Fast-casual speed without the freezer-aisle taste. Skip the line — order ahead online.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= MENU PREVIEW ======================= -->
+    <section class="section" id="menu" style="padding-top:0">
+      <div class="container">
+        <div class="menu-preview__head reveal">
+          <div>
+            <span class="eyebrow">The Line-up</span>
+            <h2 class="section-title">Fan favorites</h2>
+          </div>
+          <a href="menu.html" class="btn btn-ghost">View full menu <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+
+        <div class="menu-grid">
+          <article class="card reveal">
+            <div class="card__media"><span class="card__tag">Best Seller</span><svg class="burger" aria-hidden="true"><use href="#ic-burger"/></svg></div>
+            <div class="card__body">
+              <div class="card__row"><span class="card__name">The Classic Smash</span><span class="card__price">$9.50</span></div>
+              <p class="card__desc">Single smashed patty, American cheese, pickles, onion &amp; house sauce on toasted brioche.</p>
+              <div class="card__foot"><svg aria-hidden="true"><use href="#i-flame"/></svg> Most ordered</div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__media"><span class="card__tag spicy">Spicy</span><svg class="burger" aria-hidden="true"><use href="#ic-burger"/></svg></div>
+            <div class="card__body">
+              <div class="card__row"><span class="card__name">Firecracker Double</span><span class="card__price">$13.00</span></div>
+              <p class="card__desc">Double patty, pepper jack, jalapeños, crispy onions &amp; chipotle mayo with a kick.</p>
+              <div class="card__foot"><svg aria-hidden="true"><use href="#i-flame"/></svg> Brings the heat</div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__media"><span class="card__tag veg">Veggie</span><svg class="burger" aria-hidden="true"><use href="#ic-burger"/></svg></div>
+            <div class="card__body">
+              <div class="card__row"><span class="card__name">Garden Stack</span><span class="card__price">$11.00</span></div>
+              <p class="card__desc">House black-bean &amp; beet patty, smashed avocado, arugula &amp; herb aioli.</p>
+              <div class="card__foot"><svg aria-hidden="true"><use href="#i-leaf"/></svg> 100% plant-based</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ABOUT =========================== -->
+    <section class="section about" id="about">
+      <div class="container about__grid">
+        <div class="about__visual reveal" aria-hidden="true">
+          <div class="ring"></div>
+          <svg class="burger"><use href="#ic-burger"/></svg>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Our Story</span>
+          <h2>It started with a backyard griddle</h2>
+          <p>In 2016, two friends with one cast-iron press set out to make the perfect smash burger. Ten years and one tiny food truck later, Smash &amp; Stack is the neighborhood spot people line up for — but the obsession is exactly the same: great beef, smashed hard, served fast.</p>
+          <ul class="about__points">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><b>Ground fresh, in-house</b><span>Chuck &amp; brisket blend ground every morning — never frozen.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><b>Buns baked locally</b><span>Brioche delivered fresh daily from a family bakery two blocks away.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><b>Sauces from scratch</b><span>Every drip of house sauce and aioli is made in our kitchen.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= HOW ============================ -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">How We Cook</span>
+          <h2 class="section-title">Three steps to a perfect smash</h2>
+        </div>
+        <div class="steps">
+          <article class="step reveal"><h3>Ball &amp; sear</h3><p>A loose ball of fresh beef hits the screaming-hot flat-top and gets pressed paper-thin.</p></article>
+          <article class="step reveal"><h3>Crisp the edges</h3><p>That contact creates the Maillard crust — the lacy, caramelized edge that makes a smash burger sing.</p></article>
+          <article class="step reveal"><h3>Stack &amp; serve</h3><p>Cheese melts over the top, everything stacks on a buttered brioche bun, and it's in your hands in minutes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= TESTIMONIALS ======================= -->
+    <section class="section" id="reviews" style="padding-top:0">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Don't take our word for it</span>
+          <h2 class="section-title">Loved by the neighborhood</h2>
+        </div>
+        <div class="testi-grid">
+          <figure class="testi reveal">
+            <div class="testi__stars" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote>"Those crispy edges are unreal. I've tried every burger in town and nothing else comes close. The house sauce alone is worth it."</blockquote>
+            <figcaption class="testi__by"><span class="testi__avatar">M</span><div><b>Maya R.</b><span>Regular since 2019</span></div></figcaption>
+          </figure>
+          <figure class="testi reveal">
+            <div class="testi__stars" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote>"Fast, friendly and ridiculously consistent. The Firecracker Double has genuinely ruined other burgers for me."</blockquote>
+            <figcaption class="testi__by"><span class="testi__avatar">D</span><div><b>Devin K.</b><span>Local foodie</span></div></figcaption>
+          </figure>
+          <figure class="testi reveal">
+            <div class="testi__stars" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+            <blockquote>"The Garden Stack is the first veggie burger my whole family actually fights over. Stacked, juicy, perfect."</blockquote>
+            <figcaption class="testi__by"><span class="testi__avatar">L</span><div><b>Lena P.</b><span>Plant-based &amp; picky</span></div></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== CTA BAND ========================= -->
+    <section class="section cta-band">
+      <div class="container cta-band__inner">
+        <div>
+          <h2>Hungry yet?</h2>
+          <p>Order ahead for pickup in 8 minutes, or get it delivered hot to your door.</p>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="menu.html" class="btn btn-light"><svg aria-hidden="true"><use href="#i-truck"/></svg> Order Online</a>
+          <a href="#reserve" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.6)">Book a Table</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= VISIT / RESERVE ====================== -->
+    <section class="section" id="visit">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Visit Us</span>
+          <h2 class="section-title">Find us &amp; grab a table</h2>
+        </div>
+
+        <div class="visit__grid">
+          <div class="reveal">
+            <div class="hours-card">
+              <h3>Opening hours</h3>
+              <ul class="hours" id="hours">
+                <li data-day="1"><span>Monday</span><span>11:00 – 22:00</span></li>
+                <li data-day="2"><span>Tuesday</span><span>11:00 – 22:00</span></li>
+                <li data-day="3"><span>Wednesday</span><span>11:00 – 22:00</span></li>
+                <li data-day="4"><span>Thursday</span><span>11:00 – 23:00</span></li>
+                <li data-day="5"><span>Friday</span><span>11:00 – 00:00</span></li>
+                <li data-day="6"><span>Saturday</span><span>10:00 – 00:00</span></li>
+                <li data-day="0"><span>Sunday</span><span>10:00 – 22:00</span></li>
+              </ul>
+            </div>
+            <ul class="contact-list">
+              <li><svg aria-hidden="true"><use href="#i-pin"/></svg> 214 Grill Lane, Riverside District</li>
+              <li><svg aria-hidden="true"><use href="#i-phone"/></svg> <a href="tel:+15551234567">(555) 123-4567</a></li>
+              <li><svg aria-hidden="true"><use href="#i-mail"/></svg> <a href="mailto:hello@smashandstack.com">hello@smashandstack.com</a></li>
+            </ul>
+          </div>
+
+          <div class="reveal">
+            <form class="reserve" id="reserve" novalidate>
+              <h3>Book a table</h3>
+              <p class="sub">Reservations for parties up to 8. We'll confirm by email.</p>
+              <div class="form-grid">
+                <div class="field full">
+                  <label for="r-name">Full name <span class="req">*</span></label>
+                  <input type="text" id="r-name" name="name" autocomplete="name" required placeholder="Alex Carter" />
+                  <span class="error-msg" data-for="r-name"></span>
+                </div>
+                <div class="field">
+                  <label for="r-email">Email <span class="req">*</span></label>
+                  <input type="email" id="r-email" name="email" autocomplete="email" required placeholder="you@email.com" />
+                  <span class="error-msg" data-for="r-email"></span>
+                </div>
+                <div class="field">
+                  <label for="r-phone">Phone</label>
+                  <input type="tel" id="r-phone" name="phone" autocomplete="tel" placeholder="(555) 000-0000" />
+                  <span class="error-msg" data-for="r-phone"></span>
+                </div>
+                <div class="field">
+                  <label for="r-date">Date <span class="req">*</span></label>
+                  <input type="date" id="r-date" name="date" required />
+                  <span class="error-msg" data-for="r-date"></span>
+                </div>
+                <div class="field">
+                  <label for="r-time">Time <span class="req">*</span></label>
+                  <input type="time" id="r-time" name="time" required value="19:00" />
+                  <span class="error-msg" data-for="r-time"></span>
+                </div>
+                <div class="field full">
+                  <label for="r-guests">Party size <span class="req">*</span></label>
+                  <select id="r-guests" name="guests" required>
+                    <option value="">Select…</option>
+                    <option>1</option><option>2</option><option selected>3</option><option>4</option>
+                    <option>5</option><option>6</option><option>7</option><option>8</option>
+                  </select>
+                  <span class="error-msg" data-for="r-guests"></span>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" style="margin-top:1.2rem">Request reservation</button>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER =========================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <span class="brand"><svg class="brand__mark" aria-hidden="true"><use href="#ic-burger"/></svg> Smash<b style="color:var(--color-primary)">&amp;</b>Stack</span>
+          <p>Hand-smashed burgers, stacked high and served fast. Made fresh in the Riverside District since 2016.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+            <a href="#" aria-label="X"><svg aria-hidden="true"><use href="#i-x"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#visit">Visit</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Order</h4>
+          <ul>
+            <li><a href="menu.html">Full Menu</a></li>
+            <li><a href="menu.html">Pickup</a></li>
+            <li><a href="menu.html">Delivery</a></li>
+            <li><a href="#reserve">Reservations</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <ul>
+            <li>214 Grill Lane</li>
+            <li>Riverside District</li>
+            <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+            <li><a href="mailto:hello@smashandstack.com">hello@smashandstack.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> Smash &amp; Stack Burger Co. All rights reserved.</span>
+        <span>Made with <svg style="width:14px;height:14px;display:inline;vertical-align:-2px;color:var(--color-primary)" aria-hidden="true"><use href="#i-heart"/></svg> &amp; a hot griddle.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
