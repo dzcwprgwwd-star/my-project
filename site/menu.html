@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu — Smash &amp; Stack</title>
+  <meta name="description" content="The full Smash &amp; Stack menu: smash burgers, plant-based stacks, hand-cut sides, shakes and drinks." />
+  <meta name="theme-color" content="#dc2626" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a href="#main" class="btn btn-primary" style="position:absolute;left:-999px;top:0;z-index:200" onfocus="this.style.left='1rem';this.style.top='0.5rem'" onblur="this.style.left='-999px'">Skip to content</a>
+
+  <!-- SVG SPRITE -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="ic-burger" viewBox="0 0 200 170">
+        <path d="M16 70 C16 28 56 8 100 8 C144 8 184 28 184 70 Z" fill="#e8a04e"/>
+        <g fill="#fff5e1">
+          <ellipse cx="70" cy="34" rx="6" ry="3.4" transform="rotate(-22 70 34)"/>
+          <ellipse cx="104" cy="26" rx="6" ry="3.4" transform="rotate(8 104 26)"/>
+          <ellipse cx="132" cy="38" rx="6" ry="3.4" transform="rotate(28 132 38)"/>
+          <ellipse cx="88" cy="46" rx="6" ry="3.4" transform="rotate(-8 88 46)"/>
+          <ellipse cx="118" cy="52" rx="6" ry="3.4" transform="rotate(16 118 52)"/>
+        </g>
+        <path d="M10 74c8-9 18 4 26-4s18 4 26-4 18 4 26-4 18 4 26-4 18 4 26-4 18 4 26-4 14 2 18 6v8H10Z" fill="#7cb342"/>
+        <path d="M22 86h156l-16 22c-3 4-7 6-12 6H50c-5 0-9-2-12-6Z" fill="#ffc534"/>
+        <rect x="18" y="104" width="164" height="30" rx="15" fill="#6b3a23"/>
+        <rect x="26" y="128" width="148" height="14" rx="7" fill="#e2402f"/>
+        <path d="M22 138h156c0 16-14 24-44 24H66c-30 0-44-8-44-24Z" fill="#e09a44"/>
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+      <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+      <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6v1.9H16l-.4 2.9h-2.1v7A10 10 0 0 0 22 12Z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.3L23 22h-6.8l-5.3-6.9L4.8 22H1.7l7.8-8.9L1 2h7l4.8 6.3Zm-1.2 18h1.7L7.4 3.8H5.6Z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="Smash and Stack home">
+        <svg class="brand__mark" aria-hidden="true"><use href="#ic-burger"/></svg>
+        Smash<b>&amp;</b>Stack
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="index.html#menu">Home</a>
+        <a href="#burgers">Burgers</a>
+        <a href="#sides">Sides</a>
+        <a href="#drinks">Shakes &amp; Drinks</a>
+        <a href="index.html#visit">Visit</a>
+      </nav>
+      <div class="nav__cta">
+        <a href="index.html" class="btn btn-ghost">Home</a>
+        <a href="index.html#reserve" class="btn btn-primary">Book a Table</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <svg aria-hidden="true"><use href="#i-menu" id="toggleIcon"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow" style="justify-content:center">Our Menu</span>
+        <h1>Smashed, stacked &amp; served</h1>
+        <p class="lead">Everything is made to order with fresh, never-frozen beef and house-baked brioche. Add bacon or an extra patty to any burger.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <!-- Filters -->
+        <div class="menu-filters" id="filters" role="tablist" aria-label="Filter menu">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="burgers">Burgers</button>
+          <button class="chip" data-filter="sides">Sides</button>
+          <button class="chip" data-filter="drinks">Shakes &amp; Drinks</button>
+          <button class="chip" data-filter="veg">Vegetarian</button>
+        </div>
+
+        <p class="lead" style="text-align:center;margin:-1rem auto 2.5rem;font-size:0.95rem">
+          <span class="diet v">V</span> Vegetarian &nbsp;
+          <span class="diet gf">GF</span> Gluten-free bun available &nbsp;
+          <span class="diet s">🌶</span> Spicy
+        </p>
+
+        <!-- BURGERS -->
+        <div class="menu-section" id="burgers" data-cat="burgers">
+          <h2 class="menu-section__title">Smash Burgers</h2>
+          <div class="menu-list">
+            <article class="menu-item" data-tags="burgers">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">The Classic Smash</span><span class="menu-item__dots"></span><span class="menu-item__price">$9.50</span></div>
+                <p class="menu-item__desc">Single smashed patty, American cheese, pickles, diced onion &amp; house sauce on toasted brioche.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="burgers">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Double Double</span><span class="menu-item__dots"></span><span class="menu-item__price">$12.50</span></div>
+                <p class="menu-item__desc">Two smashed patties, double American cheese, pickles, onion &amp; house sauce.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="burgers s">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Firecracker Double <span class="menu-item__badges"><span class="diet s">🌶</span></span></span><span class="menu-item__dots"></span><span class="menu-item__price">$13.00</span></div>
+                <p class="menu-item__desc">Double patty, pepper jack, jalapeños, crispy onions &amp; chipotle mayo.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="burgers">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Bacon Jam Stack</span><span class="menu-item__dots"></span><span class="menu-item__price">$13.50</span></div>
+                <p class="menu-item__desc">Double patty, smoked cheddar, house bacon jam, caramelized onion &amp; garlic aioli.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="burgers">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Mushroom &amp; Swiss</span><span class="menu-item__dots"></span><span class="menu-item__price">$12.00</span></div>
+                <p class="menu-item__desc">Single patty, melted Swiss, garlic-butter mushrooms &amp; truffle mayo.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="burgers veg">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Garden Stack <span class="menu-item__badges"><span class="diet v">V</span></span></span><span class="menu-item__dots"></span><span class="menu-item__price">$11.00</span></div>
+                <p class="menu-item__desc">House black-bean &amp; beet patty, smashed avocado, arugula &amp; herb aioli.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- SIDES -->
+        <div class="menu-section" id="sides" data-cat="sides">
+          <h2 class="menu-section__title">Sides</h2>
+          <div class="menu-list">
+            <article class="menu-item" data-tags="sides veg">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Hand-Cut Fries <span class="menu-item__badges"><span class="diet v">V</span></span></span><span class="menu-item__dots"></span><span class="menu-item__price">$4.50</span></div>
+                <p class="menu-item__desc">Skin-on, double-fried &amp; tossed in sea salt. The only way.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="sides veg s">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Loaded Cheese Fries <span class="menu-item__badges"><span class="diet v">V</span><span class="diet s">🌶</span></span></span><span class="menu-item__dots"></span><span class="menu-item__price">$7.00</span></div>
+                <p class="menu-item__desc">Fries smothered in cheese sauce, pickled jalapeños &amp; scallions.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="sides veg">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Crispy Onion Rings <span class="menu-item__badges"><span class="diet v">V</span></span></span><span class="menu-item__dots"></span><span class="menu-item__price">$5.50</span></div>
+                <p class="menu-item__desc">Thick-cut, beer-battered &amp; served with smoky dip.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="sides">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Buffalo Chicken Tenders <span class="menu-item__badges"><span class="diet s">🌶</span></span></span><span class="menu-item__dots"></span><span class="menu-item__price">$8.00</span></div>
+                <p class="menu-item__desc">Three hand-breaded tenders tossed in buffalo, with ranch.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- DRINKS -->
+        <div class="menu-section" id="drinks" data-cat="drinks">
+          <h2 class="menu-section__title">Shakes &amp; Drinks</h2>
+          <div class="menu-list">
+            <article class="menu-item" data-tags="drinks veg">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Classic Vanilla Shake <span class="menu-item__badges"><span class="diet v">V</span></span></span><span class="menu-item__dots"></span><span class="menu-item__price">$6.00</span></div>
+                <p class="menu-item__desc">Hand-spun real-dairy shake, topped with whipped cream.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="drinks veg">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Salted Caramel Shake <span class="menu-item__badges"><span class="diet v">V</span></span></span><span class="menu-item__dots"></span><span class="menu-item__price">$6.75</span></div>
+                <p class="menu-item__desc">Caramel swirl, sea salt &amp; a pretzel crumble.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="drinks veg">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Craft Cola</span><span class="menu-item__dots"></span><span class="menu-item__price">$3.50</span></div>
+                <p class="menu-item__desc">Small-batch cola made with cane sugar. Free refills in-store.</p>
+              </div>
+            </article>
+            <article class="menu-item" data-tags="drinks veg">
+              <div class="menu-item__info">
+                <div class="menu-item__top"><span class="menu-item__name">Fresh Lemonade</span><span class="menu-item__dots"></span><span class="menu-item__price">$3.75</span></div>
+                <p class="menu-item__desc">Squeezed daily. Ask about today's seasonal flavor.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <p class="lead" id="noResults" style="display:none;text-align:center;margin-inline:auto">No items in this category — try another filter.</p>
+
+        <!-- CTA -->
+        <div class="cta-band" style="border-radius:var(--radius-lg);margin-top:2rem">
+          <div class="container cta-band__inner" style="padding-block:2.5rem">
+            <div><h2>Ready to order?</h2><p>Pickup in 8 minutes or delivered hot to your door.</p></div>
+            <a href="#" class="btn btn-light">Start your order <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <span class="brand"><svg class="brand__mark" aria-hidden="true"><use href="#ic-burger"/></svg> Smash<b style="color:var(--color-primary)">&amp;</b>Stack</span>
+          <p>Hand-smashed burgers, stacked high and served fast. Made fresh in the Riverside District since 2016.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+            <a href="#" aria-label="X"><svg aria-hidden="true"><use href="#i-x"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html#menu">Home</a></li>
+            <li><a href="index.html#about">Our Story</a></li>
+            <li><a href="index.html#reviews">Reviews</a></li>
+            <li><a href="index.html#visit">Visit</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Order</h4>
+          <ul>
+            <li><a href="#burgers">Burgers</a></li>
+            <li><a href="#sides">Sides</a></li>
+            <li><a href="#drinks">Shakes &amp; Drinks</a></li>
+            <li><a href="index.html#reserve">Reservations</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <ul>
+            <li>214 Grill Lane</li>
+            <li>Riverside District</li>
+            <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+            <li><a href="mailto:hello@smashandstack.com">hello@smashandstack.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> Smash &amp; Stack Burger Co. All rights reserved.</span>
+        <span>Made with <svg style="width:14px;height:14px;display:inline;vertical-align:-2px;color:var(--color-primary)" aria-hidden="true"><use href="#i-heart"/></svg> &amp; a hot griddle.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
