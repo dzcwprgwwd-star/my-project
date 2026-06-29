@@ -18,6 +18,35 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /* ---- Scroll progress bar + hero scroll cue ---- */
+  var progress = document.getElementById("progress");
+  var scrollCue = document.getElementById("scrollCue");
+  if (progress || scrollCue) {
+    var ticking = false;
+    var updateScrollFx = function () {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - doc.clientHeight;
+      var y = window.scrollY || doc.scrollTop;
+      if (progress) {
+        var pct = max > 0 ? y / max : 0;
+        progress.style.transform = "scaleX(" + pct + ")";
+      }
+      if (scrollCue) {
+        scrollCue.classList.toggle("hidden", y > 120);
+      }
+      ticking = false;
+    };
+    var onScrollFx = function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(updateScrollFx);
+      }
+    };
+    updateScrollFx();
+    window.addEventListener("scroll", onScrollFx, { passive: true });
+    window.addEventListener("resize", onScrollFx, { passive: true });
+  }
+
   /* ---- Mobile nav toggle ---- */
   var toggle = document.getElementById("navToggle");
   var links = document.getElementById("navLinks");
