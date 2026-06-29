@@ -18,6 +18,8 @@
 <body>
   <a href="#main" class="btn btn-primary" style="position:absolute;left:-999px;top:0;z-index:200" onfocus="this.style.left='1rem';this.style.top='0.5rem'" onblur="this.style.left='-999px'">Skip to content</a>
 
+  <div class="scroll-progress" id="progress" aria-hidden="true"></div>
+
   <!-- ============================ SVG SPRITE ========================== -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
@@ -126,6 +128,11 @@
           <div class="price-tag" aria-hidden="true"><small>FROM</small><b>$9</b></div>
         </div>
       </div>
+
+      <a href="#discover" class="scroll-cue" id="scrollCue" aria-label="Scroll to explore">
+        <span>Scroll to explore</span>
+        <span class="scroll-cue__dot" aria-hidden="true"></span>
+      </a>
     </section>
 
     <!-- =========================== MARQUEE ========================== -->
@@ -137,7 +144,7 @@
     </div>
 
     <!-- =========================== FEATURES ========================= -->
-    <section class="section">
+    <section class="section" id="discover">
       <div class="container">
         <div class="section-head center reveal">
           <span class="eyebrow">Why Smash &amp; Stack</span>

@@ -306,8 +306,11 @@ h1, h2, h3, h4 {
 /* ------------------------------- Hero ----------------------------------- */
 .hero {
   position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - var(--nav-h));
   padding-top: clamp(2rem, 6vw, 4rem);
-  padding-bottom: clamp(3rem, 7vw, 5.5rem);
+  padding-bottom: clamp(5rem, 8vw, 7rem);
   overflow: hidden;
 }
 .hero__grid {
@@ -966,6 +969,101 @@ h1, h2, h3, h4 {
   .hero__actions .btn { flex: 1; }
 }
 
+/* ------------------------- Intro / scroll FX ---------------------------- */
+
+/* Scroll progress bar (top of viewport, above nav) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  z-index: 200;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent-bright));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
+/* Hero entrance — elements rise/pop in on load.
+   animation-fill-mode: both keeps them at the final (visible) frame, so
+   prefers-reduced-motion (which zeroes the duration) leaves them visible. */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9) rotate(-5deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero__badge   { animation: riseIn 0.6s var(--ease) both; }
+.hero h1       { animation: riseIn 0.7s var(--ease) 0.12s both; }
+.hero p.lead   { animation: riseIn 0.7s var(--ease) 0.26s both; }
+.hero__actions { animation: riseIn 0.7s var(--ease) 0.4s both; }
+.hero__stats   { animation: riseIn 0.7s var(--ease) 0.54s both; }
+.hero__art     { animation: popIn 0.9s var(--ease) 0.2s both; }
+
+/* Scroll-to-explore cue */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.2rem, 3vw, 2rem);
+  transform: translateX(-50%);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-foreground);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: riseIn 0.6s var(--ease) 0.9s both;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  z-index: 5;
+}
+.scroll-cue:hover { color: var(--color-primary); }
+.scroll-cue__dot {
+  width: 30px;
+  height: 48px;
+  border: 2px solid currentColor;
+  border-radius: var(--radius-pill);
+  display: grid;
+  justify-items: center;
+  padding-top: 8px;
+}
+.scroll-cue__dot::before {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+  animation: cueScroll 1.6s var(--ease) infinite;
+}
+@keyframes cueScroll {
+  0%   { transform: translateY(0); opacity: 1; }
+  70%  { transform: translateY(16px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+/* Fades out once the user scrolls past the hero */
+.scroll-cue.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
+}
+
+/* Staggered cascade for grids of reveal items */
+.features__grid .reveal:nth-child(2),
+.menu-grid .reveal:nth-child(2),
+.steps .reveal:nth-child(2),
+.testi-grid .reveal:nth-child(2) { transition-delay: 0.12s; }
+.features__grid .reveal:nth-child(3),
+.menu-grid .reveal:nth-child(3),
+.steps .reveal:nth-child(3),
+.testi-grid .reveal:nth-child(3) { transition-delay: 0.24s; }
+
 /* ------------------------- Reduced motion ------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -974,7 +1072,9 @@ h1, h2, h3, h4 {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
   .reveal { opacity: 1; transform: none; }
+  .scroll-cue__dot::before { display: none; }
 }
